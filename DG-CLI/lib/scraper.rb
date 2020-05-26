@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'pry'
 
-#scrapes course name, distance from entered zip code, and link to it's specific course page.
+#scrapes course name, and link to it's specific course page.
 class Scraper
   def self.scrape_index()
     course_list = Nokogiri::HTML(open())
@@ -9,12 +9,16 @@ class Scraper
     courses = []
     
     course_list.css().each do |details|
-      name = course_list.css().text
-      location = course_list.css().value
-      course_page = course_list.css().value
+      name = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[1]/a).text
+      location = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[2]).text
+      distance = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[3]).text
+      hole_count = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[4]).value
+      course_page = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[1]/a).value
       course_info {
         :name => name,
         :location => location
+        :distance => distance
+        :hole_count => hole_count
         :course_page => course_page
       }
       courses << course_info
@@ -24,10 +28,13 @@ class Scraper
   
   #gets remaining variables from course detail page (course length, SSA)
   def self.scrape_course_page()
-    course_details = Nokogiri::HTML(open())
+    course_details = Nokogiri::HTML(open(@course_page))
     
     details = {}
     
-    #container = 
+    course_details.css().each do |values|
+      course_length = course_details.css(//*[@id="crse_length"]).value
+      course_ssa = course_details.css(//*[@id="content_infobar"]/span[1]/text()[2]).text.to_i
+    end
   end
 end

@@ -1,8 +1,6 @@
 # DG::CLI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/DG/CLI`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem is to assist in determining if you have a disc golf course located in a specified city/town.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+within your IRB environment, enter any town name (including state or country code) to return a list of all courses listed with matching location. Additional course information will be returned along with course name.
 
 ## Development
 
