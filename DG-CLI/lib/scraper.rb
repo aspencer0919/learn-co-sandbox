@@ -1,8 +1,9 @@
 require 'open-uri'
 require 'pry'
 
-#scrapes course name, and link to it's specific course page.
 class Scraper
+  
+  #scrapes course name, and link to it's specific course page.
   def self.scrape_index()
     course_list = Nokogiri::HTML(open())
     
@@ -26,15 +27,16 @@ class Scraper
     courses
   end
   
-  #gets remaining variables from course detail page (course length, SSA)
+  #gets remaining variables from course detail page (course length, SSE, par)
   def self.scrape_course_page()
     course_details = Nokogiri::HTML(open(@course_page))
     
     details = {}
     
     course_details.css().each do |values|
-      course_length = course_details.css(//*[@id="crse_length"]).value
-      course_ssa = course_details.css(//*[@id="content_infobar"]/span[1]/text()[2]).text.to_i
+      course_length = course_details.css(//*[@id="crse_length"]).text
+      course_sse = course_details.css(//*[@id="content_infobar"]/span[7]/text()[2]).text.to_i
+      course_par = course_details.css(//*[@id="content_infobar"]/span[6]/text()[2]).text.to_i
     end
   end
 end

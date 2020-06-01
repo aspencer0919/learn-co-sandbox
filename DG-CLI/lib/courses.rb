@@ -1,18 +1,16 @@
 class Courses
-  attr_accessor :name, :location, :distance, :hole_count, :ssa, :weight_1, :weight_2, :weight_3, :aggregate
+  attr_accessor :name, :location, :distance, :hole_count, :length, :sse, :par
   
   @@all = []
 
 	def initialize
-  	@name = name
-  	@location = location
-  	@distance = distance
-  	@hole_count = hole_count
-  	@ssa = ssa
-  	@weight_1 = weight_1
-  	@weight_2 = weight_2
-  	@weight_3 = weight_3
-  	@aggregate = aggregate
+		@name = name
+		@location = location
+		@distance = distance
+		@hole_count = hole_count
+		@length = length
+		@par = par
+		@sse = sse
 	end
 	
   def self.create_from_collection(course_array)
@@ -27,7 +25,8 @@ class Courses
     self.send("distance=", attributes_hash[:distance])
     self.send("hole count=", attributes_hash[:hole_count])
     self.send("length=", attributes_hash[:length])
-    self.send("ssa=", attributes_hash[:ssa])
+    self.send("sse=", attributes_hash[:sse])
+    self.send("par=", attributes_hash[:par])
   end
   
   def self.all
