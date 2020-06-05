@@ -1,6 +1,6 @@
 # DG::CLI
 
-This gem is to assist in determining if you have a disc golf course located in a specified city/town.
+This gem is to assist in determining the best disc golf course to play near you based on a few criteria.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-within your IRB environment, enter any town name (including state or country code) to return a list of all courses listed with matching location. Additional course information will be returned along with course name.
+within your IRB environment, choose your level of importance for the three criteria (distance from you, overall course length, and course difficulty) to return a top five list of courses for you based on your answers. Can be zip code based or not, however it will prompt for a zip code regardless.
 
 ## Development
 

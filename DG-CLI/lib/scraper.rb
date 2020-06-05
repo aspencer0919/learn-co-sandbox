@@ -4,8 +4,8 @@ require 'pry'
 class Scraper
   
   #scrapes course name, and link to it's specific course page.
-  def self.scrape_index()
-    course_list = Nokogiri::HTML(open())
+  def self.scrape_index(MODIFIED_BASE_PATH)
+    course_list = Nokogiri::HTML(open(MODIFIED_BASE_PATH))
     
     courses = []
     
