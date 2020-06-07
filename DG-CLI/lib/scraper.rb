@@ -1,11 +1,11 @@
 require 'open-uri'
-require 'pry'
+#require 'pry'
 
 class Scraper
   
   #scrapes course name, and link to it's specific course page.
-  def self.scrape_index(MODIFIED_BASE_PATH)
-    course_list = Nokogiri::HTML(open(MODIFIED_BASE_PATH))
+  def self.scrape_index(index_url)
+    course_list = Nokogiri::HTML(open(index_url))
     
     courses = []
     
@@ -15,11 +15,11 @@ class Scraper
       distance = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[3]).text
       hole_count = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[4]).value
       course_page = course_list.css(//*[@id="content_large"]/table/tbody/tr[2]/td[1]/a).value
-      course_info {
+      course_info = {
         :name => name,
-        :location => location
-        :distance => distance
-        :hole_count => hole_count
+        :location => location,
+        :distance => distance,
+        :hole_count => hole_count,
         :course_page => course_page
       }
       courses << course_info
