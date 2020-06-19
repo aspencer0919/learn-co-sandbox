@@ -1,3 +1,4 @@
+require '../lib/CLI.rb'
 require 'open-uri'
 #require 'pry'
 

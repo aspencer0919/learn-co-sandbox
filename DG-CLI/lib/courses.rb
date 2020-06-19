@@ -1,5 +1,5 @@
 class Courses
-  attr_accessor :name, :location, :distance, :hole_count, :length, :sse, :par
+  attr_accessor :name, :location, :distance, :hole_count, :course_page, :length, :sse, :par
   
   @@all = []
 

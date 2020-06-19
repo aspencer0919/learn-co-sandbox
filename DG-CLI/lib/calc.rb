@@ -16,7 +16,7 @@ class Calc
 		@aggregate = aggregate
 	end
 	
-	#calculates difficulty of course with ssa relitive to par.
+	#calculates difficulty of course with sse relitive to par.
 	def difficulty
 	  @difficulty = @sse / @par
   end
@@ -31,13 +31,18 @@ class Calc
   	end
   end
 	
-	#sorts courses based on score.
+	#sorts courses based on score
 	def best_courses
-	  self.sort do |a, b|
-	    a[10] <=> b[10]
-    end
+	  Coursess.sort_by {|score| courses.aggregate}
   end
 	
 	#returns top five courses based on score
-	
+	def display_courses
+	  counter = 0
+	  while counter < 5
+	  puts "#{@name} - #{@location} (#{@distance})"
+	  puts "#{@length} - par: #{@par}"
+	  counter += 1
+    end
+	end
 end
